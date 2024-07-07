@@ -19,18 +19,6 @@ function Calculator() {
     setNum2(0);
     setResult(0);
   }
-  function add(){
-    setResult(num1+num2);
-  }
-  function sub(){
-    setResult(num1-num2);
-  }
-  function mul(){
-    setResult(num1*num2);
-  }
-  function div(){
-    setResult(num1/num2);
-  }
 
   async function handleResult(op)  {
     const response = await axios.post('http://localhost:2000/calculate', {num1,num2, op});

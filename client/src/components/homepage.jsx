@@ -1,5 +1,21 @@
+import { useState, useEffect, React} from 'react';
+import axios from 'axios';
 import './HomeStyle.css';
 function HomePage(){
+
+
+  let [result, setResult] = useState();
+  const loadData = async() => {
+    const response = await axios.get('https://fakestoreapi.com/products');
+    setResult(response.data)
+    console.log(result)
+    
+  }
+
+  useEffect(() =>{
+    loadData();
+    },[]);
+
     return(
         <div className='BodyHome'>
             <div>
@@ -9,7 +25,7 @@ function HomePage(){
         style={{
           margin: '20px',
           fontFamily: "monospace",
-          fontSize: '82px',
+          fontSize: '52px',
           paddingTop: '5px',
           paddingLeft: '5px'
         }}
@@ -26,104 +42,28 @@ function HomePage(){
         justifyContent: 'space-evenly',
         alignItems:'space-between',
         flexWrap: 'wrap',
-        padding: '20px'
+        padding: '20px',
+        paddingTop: '40px'
       }}>
 
-        <div className='prods'>
-        <div style={{
-            backgroundColor:'#6f6f6f',
-            width:'300px',
-            height:'300px',
-            borderRadius: '12px'
-          }}></div>
-          <h1>Title</h1>
-          
-          <h2>Price</h2>
-          <span style={{
-            margin:'5px'
-          }}>Product Description, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi quod iste nesciunt doloribus odio enim impedit magnam sit nam sapiente. Repellendus praesentium itaque iusto sit minima pariatur doloribus, corporis illo!</span>
-          <h3>Rating: X X X X X stars y responeses</h3>
-         </div>
-
-         <div className='prods'>
-        <div style={{
-            backgroundColor:'#6f6f6f',
-            width:'300px',
-            height:'300px',
-            borderRadius: '12px'
-          }}></div>
-          <h1>Title</h1>
-          
-          <h2>Price</h2>
-          <span style={{
-            margin:'5px'
-          }}>Product Description, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi quod iste nesciunt doloribus odio enim impedit magnam sit nam sapiente. Repellendus praesentium itaque iusto sit minima pariatur doloribus, corporis illo!</span>
-          <h3>Rating: X X X X X stars y responeses</h3>
-         </div>
-
-         <div className='prods'>
-        <div style={{
-            backgroundColor:'#6f6f6f',
-            width:'300px',
-            height:'300px',
-            borderRadius: '12px'
-          }}></div>
-          <h1>Title</h1>
-          
-          <h2>Price</h2>
-          <span style={{
-            margin:'5px'
-          }}>Product Description, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi quod iste nesciunt doloribus odio enim impedit magnam sit nam sapiente. Repellendus praesentium itaque iusto sit minima pariatur doloribus, corporis illo!</span>
-          <h3>Rating: X X X X X stars y responeses</h3>
-         </div>
-
-         <div className='prods'>
-        <div style={{
-            backgroundColor:'#6f6f6f',
-            width:'300px',
-            height:'300px',
-            borderRadius: '12px'
-          }}></div>
-          <h1>Title</h1>
-          
-          <h2>Price</h2>
-          <span style={{
-            margin:'5px'
-          }}>Product Description, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi quod iste nesciunt doloribus odio enim impedit magnam sit nam sapiente. Repellendus praesentium itaque iusto sit minima pariatur doloribus, corporis illo!</span>
-          <h3>Rating: X X X X X stars y responeses</h3>
-         </div>
-
-         <div className='prods'>
-        <div style={{
-            backgroundColor:'#6f6f6f',
-            width:'300px',
-            height:'300px',
-            borderRadius: '12px'
-          }}></div>
-          <h1>Title</h1>
-          
-          <h2>Price</h2>
-          <span style={{
-            margin:'5px'
-          }}>Product Description, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi quod iste nesciunt doloribus odio enim impedit magnam sit nam sapiente. Repellendus praesentium itaque iusto sit minima pariatur doloribus, corporis illo!</span>
-          <h3>Rating: X X X X X stars y responeses</h3>
-         </div>
-
-         <div className='prods'>
-        <div style={{
-            backgroundColor:'#6f6f6f',
-            width:'300px',
-            height:'300px',
-            borderRadius: '12px'
-          }}></div>
-          <h1>Title</h1>
-          
-          <h2>Price</h2>
-          <span style={{
-            margin:'5px'
-          }}>Product Description, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi quod iste nesciunt doloribus odio enim impedit magnam sit nam sapiente. Repellendus praesentium itaque iusto sit minima pariatur doloribus, corporis illo!</span>
-          <h3>Rating: X X X X X stars y responeses</h3>
-         </div>
+        {
+          result?.map((product) => (
+            <div className='prods'>
+              <img src={product.image} alt="product image" style={{
+                backgroundColor:'#6f6f6f',
+                width:'300px',
+                height:'300px',
+                borderRadius: '12px'}}/>
+              <h1>{product.title}</h1>
+              
+              <h2>${product.price}</h2>
+              <span>
+                {product.description}
+                </span>
+              <h3>Rating:{product.rating.rate}stars {product.rating.count} responeses</h3>
+             </div>
+         ))
+        }
 
     </div>
   </div>
