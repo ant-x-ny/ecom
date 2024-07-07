@@ -17,6 +17,7 @@ function HomePage(){
     },[]);
 
     return(
+      <>
         <div className='BodyHome'>
             <div>
   <div style={{ height: '125px' }} />
@@ -27,16 +28,17 @@ function HomePage(){
           fontFamily: "monospace",
           fontSize: '52px',
           paddingTop: '5px',
-          paddingLeft: '5px'
+          paddingLeft: '5px',
+          color:'white'
         }}
       >
         Products
       </h2>
     <div
       style={{
-        backgroundColor:'white',
+        backgroundColor:'#686D76',
         margin:'0px 40px',
-        height:'1000px',
+        height:'auto',
         display:'flex',
         padding:'40px',
         justifyContent: 'space-evenly',
@@ -50,7 +52,6 @@ function HomePage(){
           result?.map((product) => (
             <div className='prods'>
               <img src={product.image} alt="product image" style={{
-                backgroundColor:'#6f6f6f',
                 width:'300px',
                 height:'300px',
                 borderRadius: '12px'}}/>
@@ -60,7 +61,8 @@ function HomePage(){
               <span>
                 {product.description}
                 </span>
-              <h3>Rating:{product.rating.rate}stars {product.rating.count} responeses</h3>
+              <h3>{product.rating.rate} stars</h3>
+              <h3>{product.rating.count} responeses</h3>
              </div>
          ))
         }
@@ -70,6 +72,11 @@ function HomePage(){
 </div>
 
         </div>
+        <footer className='BodyFooter'>
+    <h1 style={{color:'black',fontSize:'10px'}}>@NoCopyRightsReserved :')</h1>  
+    <h1 style={{color:'black',fontSize:'10px'}}>By: KalathilGeorgeAntony</h1>  
+    </footer>
+        </>
     )
 }
 

@@ -9,7 +9,7 @@
     height: auto;
     background-size: 100%;
     animation-play-state: paused;
-    background-color: #fefcda;
+    background-color: #373A40;
     background-size: 100%;
 
 }
@@ -17,6 +17,7 @@
 .prods{
     border: 3px solid black;
     border-radius: 12px;
+    background-color: #ffffff;
     width: 400px;
     height: auto;
     padding: 20px 20px;
@@ -42,4 +43,19 @@
 .prods h3{
     font-family: monospace;
     font-size: 16px;
+}
+.BodyFooter{
+    padding: 0px;
+    font-family: monospace;
+    background-color: white;
+    border-top: 2px solid black;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+}
+.prods:hover{
+    background-color: #e3e3e3;
 }

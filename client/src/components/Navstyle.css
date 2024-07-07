@@ -6,15 +6,9 @@
     overflow: hidden;
     border-bottom: 2px solid black;
 }
-a:link{
-    color: black;
-    text-decoration: none;
-}
-a:visited{
-    color: black;
-}
-a:hover{
+a:link, a:hover, a:visited{
     color: white;
+    text-decoration: none;
 }
 .nav-buttons{
     transition: 0.4s;
@@ -28,22 +22,4 @@ a:hover{
     transition: 0.2s;
     height: 50px;
     background-color: #41886F;
-}
-
-@keyframes  loop {
-20%{
-background-position: left;
-}
-40%{
-background-position: center;
-}
-60%{
-background-position: right;
-}
-80%{
-background-position: center;
-}
-100%{
-background-position: left;
-}
 }
