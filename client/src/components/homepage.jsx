@@ -6,7 +6,7 @@ function HomePage(){
 
   let [result, setResult] = useState();
   const loadData = async() => {
-    const response = await axios.get('https://fakestoreapi.com/products');
+    const response = await axios.get('http://localhost:2000/products');  /*https://fakestoreapi.com/products*/
     setResult(response.data)
     console.log(result)
     
@@ -52,8 +52,8 @@ function HomePage(){
           result?.map((product) => (
             <div className='prods'>
               <img src={product.image} alt="product image" style={{
-                width:'300px',
-                height:'300px',
+                width:'200px',
+                height:'200px',
                 borderRadius: '12px'}}/>
               <h1>{product.title}</h1>
               
