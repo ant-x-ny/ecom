@@ -1,16 +1,22 @@
 const express = require('express');
 const app = express();
-const axios = require('axios');
 const cors = require('cors');
 const { MongoClient } = require('mongodb');
 
 app.use(cors())
 app.use(express.json());
 
+async function mongoConnect() {
+    let client = new MongoClient('mongodb+srv://kalathilgeorgeantony:9RTLTvh1VZ11ORRR@bigdata.68y9vlb.mongodb.net/?retryWrites=true&w=majority&appName=BigData');
+    await client.connect();
+    db = client.db('homepagetest');
+    ;
+ }
 
 app.get('/products', async function (req, res) {
-    let userdb = await axios.get('https://fakestoreapi.com/products');
-    res.json(userdb.data);
+    let userdb = db.collection('products')
+    let output = await userdb.find({}).toArray();
+    res.json(output);
  });
 
  app.post('/addproduct', async function(req, res) {
@@ -21,4 +27,5 @@ app.get('/products', async function (req, res) {
 
 app.listen(2000, function() {
     console.log('server listening on port 2000');
+    mongoConnect();
     })

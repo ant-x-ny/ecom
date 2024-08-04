@@ -1,0 +1,16 @@
+.cont{
+    min-height: calc(100vh - 34px);
+}
+.BodyFooter{
+    z-index: 9;
+    padding: 0px;
+    font-family: monospace;
+    background-color: white;
+    border-top: 2px solid black;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+}

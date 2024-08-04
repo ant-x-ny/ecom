@@ -1,6 +1,9 @@
-import './ErrorStyle.css';
+import './css/ErrorStyle.css';
+import NavBar from './navbar';
 function Error(){
     return(
+        <>
+        <NavBar />
         <div className='BodyError'>
             <title>Error 404</title>
             <div>
@@ -10,6 +13,7 @@ function Error(){
         <a href="/"><button id="cmb">Back To HomePage</button></a>
     </div>
         </div>
+        </>
     )
 }
 
